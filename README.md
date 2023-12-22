@@ -45,7 +45,3 @@ kütüphaneleri paylaşmasın sağlamaktır. Projenin ilk aşaması kütüphane 
 ### "Session" ile Oluşturulmuş Geçici Kitap Listesi:
 
 <img src="https://i.hizliresim.com/4s5e0l7.png" alt="photo-10"/><br>
-
-### "Memory Cache" çalıştığına dair log (hocam cache yapılacağını sonradan farkettim geç oldu. Ben yaptım ama isterseniz değerlendirmeye katmayabilirsiniz zamanında yapan arkadaşlara haksızlık olamasın):
-
-<img src="https://img.imgyukle.com/2023/06/12/rLrNBx.png" alt="photo-10"/><br>

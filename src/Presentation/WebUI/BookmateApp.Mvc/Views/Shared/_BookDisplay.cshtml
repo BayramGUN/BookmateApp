@@ -1,0 +1,14 @@
+@model BookDisplayResponse
+
+<div class="card" style="height: 38rem; width: 12rem;">
+    <a asp-controller="Home" asp-action="BookDetails" asp-route-id="@Model.Id">    
+        <img src="@Model.CoverImageUrl" class="img-fluid" alt="book-img">
+    </a>
+    <div class="card-body d-flex flex-column">
+        <h3 class="card-title">@Model.Title</h3>
+        <p class="card-text"><b>@Model.AuthorName</b></p>
+        <p class="card-text"><b>Türü: </b>@Model.Genre</p>
+        <p class="card-text"><b>Basım Tarihi: </b>@Model.PublishDate.Year</p>
+        <button class="btn btn-success mt-auto library"  data-id="@Model.Id">Listeye Ekle</button>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+﻿@model PaginationBookViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    var columnCount = 0;
+}
+
+<div class="row m-4">
+    @foreach (var bookDisplay in Model.Books)
+    {
+        @if (columnCount != 0 && columnCount % 4 == 0)
+        {
+            @:</div><div class="row m-4">
+        }      
+        <div class="col order-last">
+           <partial name="_bookDisplay" model="bookDisplay"/>
+        </div>
+       
+        
+        columnCount++;
+    }
+</div>
+
+<div page-model="Model.PagingInfoModel" page-action="Index"></div>
+
+<div class="toast-container position-fixed bottom-0 end-0 p-3">
+  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">      
+      <strong class="me-auto">Kütüphane Bilgisi</strong>  
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">  
+    </div>
+  </div>
+</div>
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('.library').on('click', function() {
+                let id = $(this).data('id');
+                console.log(id);
+                let urlString = '/Library/AddBook/' + id;
+                $.ajax({
+                    url: urlString,
+                    async: true,   
+                    type: 'GET',
+                    data: { bookId: id },
+                    success: function(data) {
+                        console.log(data)
+                       
+                        const toastLiveExample = document.getElementById('liveToast');
+                        const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+                        toastBootstrap.show();
+                         
+                        //location = location;
+                    },
+                    error: function(err) {
+                        console.log('error: ', err)
+                        alert(urlString + ' not found');
+                    }
+                });
+            });
+        });
+        
+
+    </script>
+} 

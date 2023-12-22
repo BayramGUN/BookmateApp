@@ -1,0 +1,32 @@
+
+@model BookDisplayResponse
+
+<div class="container">
+    <h1>Kitap detayları</h1>
+    <table class="table">
+        <tr>
+            <th>Başlık:</th>
+            <td>@Model.Title</td>
+        </tr>
+        <tr>
+            <th>Yazar:</th>
+            <td>@Model.AuthorName</td>
+        </tr>
+        <tr>
+            <th>Tür:</th>
+            <td>@Model.Genre</td>
+        </tr>
+        <tr>
+            <th>İlk baskı yılı:</th>
+            <td>@Model.PublishDate.Year</td>
+        </tr>
+        <tr>
+            <th>Açıklama:</th>
+            <td>@Model.Description</td>
+        </tr>
+        <tr>
+            <th>Rate:</th>
+            <td>@Model.Rate</td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,69 @@
+﻿@model BookViewModel
+@{
+    ViewData["Title"] = "CreateBook";
+}
+
+<h1>CreateBook</h1>
+
+<h4>CreateBookRequest</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateBook">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="@Model.CreateRequest.Title" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.Title" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CreateRequest.Description" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.Description" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CreateRequest.Rate" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.Rate" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.Rate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CreateRequest.CoverImageUrl" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.CoverImageUrl" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.CoverImageUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CreateRequest.IsRead" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.IsRead" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.IsRead" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CreateRequest.AuthorId" class="control-label"></label>
+                <select asp-for="@Model.CreateRequest.AuthorId" class="form-control" asp-items="@Model.AuthorItems">
+                </select>
+                <span asp-validation-for="@Model.CreateRequest.AuthorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CreateRequest.GenreId" class="control-label"></label>
+                <select asp-for="@Model.CreateRequest.GenreId" class="form-control" asp-items="@Model.GenreItems">
+                </select>
+                <span asp-validation-for="@Model.CreateRequest.GenreId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CreateRequest.PublishDate" class="control-label"></label>
+                <input asp-for="@Model.CreateRequest.PublishDate" class="form-control" />
+                <span asp-validation-for="@Model.CreateRequest.PublishDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

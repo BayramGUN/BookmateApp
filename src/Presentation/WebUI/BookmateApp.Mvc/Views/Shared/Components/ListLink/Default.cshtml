@@ -1,0 +1,13 @@
+@model BookCollection
+@if (Model == null)
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Library" asp-action="Index">Listem</a>
+    </li>
+}
+else
+{
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="" asp-controller="Library" asp-action="Index">Listem <span class="badge rounded-pill bg-black">@Model.BookListItems.Count()</span> </a>
+    </li>
+}

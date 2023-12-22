@@ -1,0 +1,68 @@
+@model BookCollection
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Geçici Kitap Listeniz</h1>
+
+@if(Model.BookListItems.Count == 0)
+{
+    <div class="alert alert-danger">
+        Geçici kitap listenize henüz kitap eklemesi yapmadınız!
+    </div>
+}
+else
+{
+    <form method="post" action="/Library/CreateLibrary">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="@Model.LibraryName" class="control-label"></label>
+            <input asp-for="@Model.LibraryName" class="form-control" />
+            <span asp-validation-for="@Model.LibraryName" class="text-danger"></span>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Kitap Adı</th>
+                    <th>Yazarı</th>
+                    <th>Yayım Tarihi</th>
+                    <th>Rate</th>
+                    <th>Türü</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bookListItem in Model.BookListItems)
+                {
+                    <tr>
+                    
+                        <div>
+                        
+                        <td>
+                            @bookListItem.Book.Title
+                        </td>
+                        <td>@bookListItem.Book.AuthorName</td>
+                        <td>@bookListItem.Book.PublishDate.Year</td>
+                        <td>@bookListItem.Book.Rate</td>
+                        <td>@bookListItem.Book.Genre</td>
+                        <td>
+                            <a asp-controller="Library" asp-action="RemoveBook" asp-route-id="@bookListItem.Book.Id">kaldır</a>
+                        </td>
+                        <td>
+                            <label for="checkbox_@bookListItem.Book.Id">Seç:</label>
+                            <input type="checkbox" id="checkbox_@bookListItem.Book.Id" name="selectedBooks" value="@bookListItem.Book.Id" />
+                        </td>
+                        </div>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="4">Listenizdeki kitapların ortalama oy oranı: @Model.AvarageBookRates().ToString()</td>
+                </tr>
+            </tfoot>
+        </table>
+        <input type="submit" class="btn btn-primary" value="Kütüphane oluştur" />
+    </form>
+}

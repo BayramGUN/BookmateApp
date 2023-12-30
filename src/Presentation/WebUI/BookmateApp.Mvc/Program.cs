@@ -21,7 +21,7 @@ builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromHours(12);
 });
-builder.Services.AddInjections(connectionString);
+builder.Services.AddInjections(connectionString!);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
